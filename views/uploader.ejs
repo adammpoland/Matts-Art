@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+     <title>Homebase</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/css?family=Megrim&display=swap" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+     <link rel="stylesheet" type="text/css" href="darkred.css">
+     <style>
+        body{
+          background-image: url("img/0.gif");
+          background-repeat: no-repeat;
+          background-size: cover;
+          /*
+          -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+          */
+        }
+
+       
+     </style>
+  </head>
+
+  <body>
+
+      <ul>
+        <li><a href="/">Matt's Art</a></li>
+        <li><a class="active" href="/uploader">Add</a></li>
+      </ul>
+
+      <br>
+
+      <div class="container">
+          <h1 class="title">uploader</h1>
+      </div>
+      <br>
+      <div class="container ">
+        <div class="container">
+          <form action="/upload" method="post" enctype="multipart/form-data">
+                <div class="file-field input-field">
+                  <div class="btn">
+                    <span>File</span>
+                    <input id="file-upload" type="file" name='myFile'>
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+                  <div class="input-field">
+                    <input class="file-path validate" placeholder="Password" type="text">
+                  </div>
+                </div>
+                <input class="btn" type="submit" value="Upload File">
+            </form>
+        </div>
+        <br>
+      </div>
+
+      <br>
+
+
+
+  </body>
+</html>
