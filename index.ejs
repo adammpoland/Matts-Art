@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+     <title>Matt's Art</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT&display=swap&subset=cyrillic-ext" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" type="text/css" href="darkred.css">
+
+     <script>
+      $(document).ready(function(){
+        $('.materialboxed').materialbox();
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.materialboxed');
+        var instances = M.Materialbox.init(elems);
+      });
+    
+      // Or with jQuery
+    
+      $(document).ready(function(){
+        $('.materialboxed').materialbox();
+      });
+
+      $(document).ready(function(){
+        $('.fixed-action-btn').floatingActionButton();
+      });
+
+      
+     </script>
+  </head>
+
+  <body>
+      <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3"></script>
+            
+    <div class="container cHeight">
+      <h2 class="title " style="background-color:transparent">Matt's Art</h2>
+
+        <div class="row flex">
+        
+    
+        <% for(let i=ideas.length-1; i>=0; i--) {%>
+          <div class="col s12 m5 l3">
+            <div class="card cyan darken-2 hoverable">
+              <div class="card-image">
+                <img class="materialboxed" data-caption="<%=ideas[i].title%>" width="650" src="../public/uploads/<%=ideas[i].title%>">
+
+              </div>
+              
+              <div class="card-action">
+                  <!-- The social media icon bar -->
+                  <ul>
+                    <li>
+                        <div class="fb-share-button" data-href="http://159.89.157.220:5001/public/uploads/<%=ideas[i].title%>" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>                   
+                    </li>
+                    <li><a href="#" class="btn"><i class="fa fa-shopping-cart"></i>  $30.00</a></li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+      <% } %>
+      </div>
+    </div>
+
+      <ul>
+        <li><a class="active" href="/uploader">ADD</a></li>
+        
+      </ul>
+     
+  </body>
+</html>

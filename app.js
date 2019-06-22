@@ -6,9 +6,8 @@ const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const hostURL = 'http://localhost:5001/';
+const hostURL = 'http://159.89.157.220:5001/';
 const app = express();
-var methodOverride = require('method-override');
 
 //promise
 mongoose.Promise = global.Promise;
@@ -22,8 +21,6 @@ mongoose.connect(keys.mongoURI, {
     .catch(err => console.log(err));
 
 
-// override with POST having ?_method=DELETE
-app.use(methodOverride('_method'))
     //body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
