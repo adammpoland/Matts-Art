@@ -57,7 +57,7 @@ input.upload{
 .title{
   font-size:80px;
   margin:auto;
-  padding :15px;
+  padding:15px;
 }
 
 ul {
@@ -66,7 +66,6 @@ ul {
 
 ul li {
   list-style-type: none;
-  float: center;
 }
 
 ul li a i {
@@ -76,7 +75,6 @@ ul li a i {
   height: 40px;
 
   font-size: 35px;
-  text-align: center;
  
   transition: all 0.2s ease-in-out;
 
@@ -90,9 +88,8 @@ ul li a i {
   text-overflow: ellipsis;
 }
 a{
-  color:rgb(115, 0, 255);
+  color:#0097a7;
   text-decoration: none;
-  text-align: center;
 
 }
 a:link{

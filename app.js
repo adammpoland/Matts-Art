@@ -9,6 +9,19 @@ const fs = require('fs');
 const hostURL = 'http://159.89.157.220:5001/';
 const app = express();
 
+
+var https = require('https');
+
+
+// This line is from the Node.js HTTPS documentation.
+var options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+};
+
+
+
+
 //promise
 mongoose.Promise = global.Promise;
 const keys = require('./config/keys');
@@ -56,6 +69,47 @@ app.use("/views", express.static(path.join(__dirname, 'views')));
 
 app.use(express.static("./views"));
 
+const stripe = require('stripe')('sk_test_WJqXGrriFnn8htYvtoymCslA');
+
+
+app.get('/checkout', (req, res) => {
+    res.render('checkout');
+})
+
+app.post('/charge', (req, res) => {
+
+    // Set your secret key: remember to change this to your live secret key in production
+    // See your keys here: https://dashboard.stripe.com/account/apikeys
+
+    // Token is created using Checkout or Elements!
+    // Get the payment token ID submitted by the form:
+    const token = req.body.stripeToken; // Using Express
+    console.log(token);
+    var buyerInfo = {
+        fName: req.body.fName,
+        lName: req.body.lName,
+        sAddress: req.body.sAddress,
+        sState: req.body.sState,
+        sCity: req.body.sCity,
+        sZip: req.body.sZip
+    }
+ 
+    console.log(buyerInfo);
+    
+    (async () => {
+        const charge = await stripe.charges.create({
+            amount: 400,
+            currency: 'usd',
+            description: 'book',
+            source: token,
+        });
+        Idea.find({}, (err, ideas) => {
+            if (err) return console.log(err);
+    
+            res.render('index', { ideas: ideas });
+        });
+    })();
+})
 
 
 
@@ -165,4 +219,12 @@ app.post('/deleteFile', (req, res) =>{
 
 const port = 5001;
 
-app.listen(port, () => console.log('server started on 5001'));
+//app.listen(port, () => console.log('server started on 5001'));
+https.createServer({
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+  }, app)
+  .listen(3000, function () {
+    console.log('Example app listening on port 3000! Go to https://localhost:3000/')
+  })
+console.log('server started on ' + port)
